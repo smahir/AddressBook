@@ -17,20 +17,18 @@ public class App {
 
 				System.out.println("Welcome! \n1. Login \n2. Register");
 				int answer = input.nextInt();
-				// input.nextLine();
-				input.close();
 
+				input.nextLine();
+	
 				switch (answer) {
 				case 1:
-					
+
 					User user = new User();
 					System.out.println("Enter username: ");
 					user.setUsername(input.nextLine());
 					System.out.println("Enter password: ");
 					user.setPassword(input.nextLine());
-					
-					
-					
+
 					break;
 				case 2:
 					Register.registerUser();
@@ -40,7 +38,7 @@ public class App {
 				}
 
 			} catch (Exception e) {
-				System.out.println("Something happened duhh");
+				System.out.println(e);
 			}
 		}
 
