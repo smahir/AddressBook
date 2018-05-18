@@ -2,6 +2,7 @@ package main;
 
 import java.util.Scanner;
 import DTO.User;
+import DAO.Login;
 import DAO.Register;
 
 public class App {
@@ -21,12 +22,17 @@ public class App {
 				
 				switch (answer) {
 				case 1:
-
 					User user = new User();
 					System.out.println("Enter username: ");
 					user.setUsername(input.nextLine());
 					System.out.println("Enter password: ");
 					user.setPassword(input.nextLine());
+					
+					boolean logged = Login.login(user);
+					
+					if (logged) {
+						LoginView.view();
+					}
 					
 					break;
 				case 2:

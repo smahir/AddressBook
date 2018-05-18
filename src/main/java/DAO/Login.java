@@ -13,13 +13,12 @@ public class Login {
 
 	public static boolean login(User user) throws Exception {
 		String query = "SELECT * FROM users WHERE username = ? AND password = ?";
-		ResultSet rs = null;
 
 		try (PreparedStatement stm = conn.prepareStatement(query)) {
 			stm.setString(1, user.getUsername());
 			stm.setString(2, user.getPassword());
 
-			((PreparedStatement) rs).executeQuery();
+			ResultSet rs = stm.executeQuery();
 			if (rs.next()) {
 				if (user.getUsername().equals(rs.getString("username"))
 						&& user.getPassword().equals(rs.getString("password"))) {
@@ -31,7 +30,6 @@ public class Login {
 				return false;
 			}
 		} return true;
-
 	}
-
+	
 }
