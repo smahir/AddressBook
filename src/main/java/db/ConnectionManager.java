@@ -38,7 +38,7 @@ public class ConnectionManager {
 	public Connection getConnection() {
 		if (conn == null) {
 			if (openConnection()) {
-				System.out.println("Konekcija otvorena.");
+				//System.out.println("Konekcija otvorena.");
 				return conn;
 			} else {
 				return null;
@@ -48,7 +48,7 @@ public class ConnectionManager {
 	}
 
 	public void close() {
-		System.out.println("Konekcija zatvorena.");
+		//System.out.println("Konekcija zatvorena.");
 		try {
 			conn.close();
 			conn = null;
