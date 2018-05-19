@@ -24,7 +24,7 @@ public class Contacts {
 		String lastname = input.nextLine();
 		System.out.println("Enter contact phonenumber: ");
 		String phonenumber = input.nextLine();
-		
+
 		try (PreparedStatement stm = conn.prepareStatement(query)) {
 			stm.setString(1, name);
 			stm.setString(2, lastname);
@@ -34,8 +34,7 @@ public class Contacts {
 			stm.executeUpdate();
 
 			System.out.println("Contact added!");
-		
-			
+
 		}
 
 	}
@@ -49,13 +48,10 @@ public class Contacts {
 			stm.setString(1, user.getUsername());
 			rs = stm.executeQuery();
 
-			if (!rs.next()) {
-				System.out.println("No contacts added.");
-			} else {
-				while (rs.next()) {
-					System.out.println("Contact name: " + rs.getString("name") + "\n Contact last name: "
-							+ rs.getString("lastname") + "\n Contact phone number: " + rs.getString("phonenumber"));
-				}
+			if (rs.next()) {
+				System.out.println("Contact name: " + rs.getString("name") + "\n Contact last name: "
+						+ rs.getString("lastname") + "\n Contact phone number: " + rs.getString("phonenumber"));
+				rs.close();
 			}
 		}
 	}
