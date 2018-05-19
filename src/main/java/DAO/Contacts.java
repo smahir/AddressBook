@@ -16,7 +16,7 @@ public class Contacts {
 	public void addContact(User user) throws SQLException {
 		Scanner input = new Scanner(System.in);
 
-		String query = "INSER INTO contacts(name, lastname, phonenumber, userID) VALUES(?, ?, ?, ?)";
+		String query = "INSERT INTO contacts(name, lastname, phonenumber, userID) VALUES(?, ?, ?, ?)";
 
 		System.out.println("Enter contact name:	");
 		String name = input.nextLine();
@@ -25,6 +25,7 @@ public class Contacts {
 		System.out.println("Enter contact phonenumber: ");
 		String phonenumber = input.nextLine();
 		int userID = user.getUserID();
+		
 		
 		try (PreparedStatement stm = conn.prepareStatement(query)) {
 			stm.setString(1, name);
@@ -35,7 +36,7 @@ public class Contacts {
 			stm.executeUpdate();
 
 			System.out.println("Contact added!");
-			input.close();
+			
 		}
 		conn.close();
 
