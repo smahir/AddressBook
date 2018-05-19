@@ -2,6 +2,7 @@ package main;
 
 import java.util.Scanner;
 import DTO.User;
+import DAO.Contacts;
 import DAO.Login;
 import DAO.Register;
 
@@ -30,8 +31,27 @@ public class App {
 					
 					boolean logged = Login.login(user);
 					
+					
 					if (logged) {
-						LoginView.view();
+						Contacts contact = new Contacts();
+						System.out.println("You are logged in now!");
+						System.out.println("1. Add new contact \n2. See all contacts \n3.Exit");
+						int answer2 = input.nextInt();
+						boolean checker2 = true;
+						while (checker2) {
+
+							switch (answer2) {
+							case 1:
+								contact.addContact(user);
+								break;
+							case 2:
+								contact.seeAll(user);
+								break;
+							case 3:
+								checker = false;
+							}
+
+						}
 					}
 					
 					break;
